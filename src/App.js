@@ -6,11 +6,14 @@ import Statistics from './pages/Statistics';
 import Documents from './pages/Documents';
 import Chat from './pages/Chat';
 import Support from './pages/Support';
-import Calender from './pages/Calender';
+import Calendar from './pages/Calendar';
+import MainMenu from './components/MainMenu'
+import { Box } from '@mui/system';
 function App() {
   return (
-    <>
+   
     <BrowserRouter>
+    {/* <MainMenu/> */}
     <Routes>
       <Route path='/' element={<Dashboard/>}/>
       <Route path='/People' element={<People/>}/>
@@ -18,10 +21,11 @@ function App() {
       <Route path='/Documents' element={<Documents/>}/>
       <Route path='/Chat' element={<Chat/>}/>
       <Route path='/Support' element={<Support/>}/>
-      <Route path='/Calender' element={<Calender/>}/>
+      <Route path='/Calendar' element={<Calendar/>}/>
     </Routes>
+    
     </BrowserRouter>
-    </>
+   
   );
 }
 

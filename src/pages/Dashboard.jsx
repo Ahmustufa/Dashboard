@@ -1,9 +1,9 @@
-import { Button, Grid, Modal, Paper, Typography } from "@mui/material";
+import { Button, Grid, Modal, Paper, Stack, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Donut from "../components/DashboardComponents/Donut";
 import MainMenu from "../components/MainMenu";
-import Chart from "react-apexcharts";
 import { Box } from "@mui/system";
+import Graph from "../components/DashboardComponents/Graph";
 
 const Dashboard = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -13,6 +13,7 @@ const Dashboard = () => {
   const closeModal = () => {
     setModalShow(false);
   };
+  
   const style = {
     position: 'absolute',
     top: '50%',
@@ -31,74 +32,84 @@ const Dashboard = () => {
           <Grid item container columnSpacing={5} rowSpacing={6}>
             <Grid item xs={3}>
               <Paper elevation={3}>
-                <Grid container>
-                  <Grid item xs={6} sx={{ m: "1rem" }}>
-                    <b>Total Employees</b>
-                  </Grid>
-                  <Grid item xs={6} sx={{ m: "1rem" }}>
-                    <h1>
-                      <b>482</b>
-                    </h1>
-                  </Grid>
-                  <Grid container>
-                    <Donut />
-                  </Grid>
-                </Grid>
+                <Stack spacing={2} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">Total Employees</Typography>
+                  <Typography variant="h6">482</Typography>
+                  <Donut/>
+                </Stack>
               </Paper>
             </Grid>
             <Grid item xs={3}>
-              <Paper elevation={3} sx={{ p: "1rem" }}>
-                <b>Number of Leave</b>
+              <Paper elevation={3} >
+              <Stack spacing={2} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">Number of Leaves</Typography>
+                  <Typography variant="h6">482</Typography>
+                  <Donut/>
+                </Stack>
               </Paper>
             </Grid>
             <Grid item xs={3}>
-              <Paper elevation={3} sx={{ p: "1rem" }}>
+              <Paper elevation={3} >
+                <Stack spacing={2} sx={{p: "1rem"}}> 
                 <Button variant="text" onClick={openModal}>
-                  New Employees
+                <Typography variant="h6">New Employees</Typography>
                 </Button>
+                  <Donut/>
+                </Stack>
               </Paper>
             </Grid>
             <Grid item xs={3}>
-              <Paper elevation={3} sx={{ p: "1rem" }}>
-                <b>Candidates</b>
+              <Paper elevation={3} >
+              <Stack spacing={2} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">Certifications</Typography>
+                  <Typography variant="h6">482</Typography>
+                  <Donut/>
+                </Stack>
               </Paper>
             </Grid>
             <Grid container item columnSpacing={5}>
               <Grid item xs={3}>
-                <Paper elevation={3} sx={{ p: "1rem" }}>
-                  <b>Applications</b>
+                <Paper elevation={3}>
+                <Stack spacing={2} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">Discovery</Typography>
+                  
+                  <Donut/>
+                </Stack>
                 </Paper>
               </Grid>
               <Grid item xs={6}>
-                <Paper elevation={3} sx={{ p: "1rem" }}>
-                  <b>Interviews</b>
+                <Paper elevation={3}>
+                <Stack spacing={2} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">Reports</Typography>
+                  
+                  <Donut/>
+                </Stack>
                 </Paper>
               </Grid>
               <Grid item xs={3}>
-                <Paper elevation={3} sx={{ p: "1rem" }}>
-                  <b>Staff Turnover</b>
+                <Paper elevation={3}>
+                <Stack spacing={2} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">License</Typography>
+                  <Donut/>
+                </Stack>
                 </Paper>
               </Grid>
             </Grid>
             <Grid container item columnSpacing={5}>
               <Grid item xs={6}>
-                <Paper elevation={3} sx={{ p: "1rem" }}>
-                  <Grid container>
-                    <b>Applicants Received Time</b>
-                  </Grid>
-                  <Grid container>
-                    {/* <Chart
-                      options={this.state.options}
-                      series={this.state.series}
-                      type="line"
-                      width="300"
-                    />  */}
-                  </Grid>
+                <Paper elevation={3} sx={{pb:"2.2rem"}}>
+                <Stack spacing={3} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">Application Received Time</Typography>
+                  <Donut/>
+                </Stack>
                 </Paper>
               </Grid>
               <Grid item xs={6}>
-                <Paper elevation={3} sx={{ p: "1rem" }}>
-                  <b>Calendar</b>
+                <Paper elevation={3}>
+                <Stack spacing={2} sx={{p: "1rem"}}> 
+                  <Typography variant="h6">Calendar</Typography>
+                  <Graph/>
+                </Stack>
                 </Paper>
               </Grid>
             </Grid>
@@ -107,14 +118,16 @@ const Dashboard = () => {
             open={modalShow}
             onClose={closeModal}
             aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description" >
+            aria-describedby="modal-modal-description"  >
             <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
+              <Typography id="modal-modal-title" variant="h6" component="h2" sx={{color: "white"}}>
+                Add New Employee
               </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-              </Typography>
+              <Stack spacing={3}> 
+              <TextField id="standard-basic" label="Email" variant="standard" /> 
+              <TextField id="standard-basic" label="Password" variant="standard" /> 
+              <Button variant="contained" onClick={(e)=> e.target.value}>Submit</Button>
+              </Stack>
             </Box>
           </Modal>
         </Grid>

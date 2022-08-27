@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import React from 'react'
 import MainMenu from '../components/MainMenu'
-const People = () => {
+const Calendar = () => {
   return (
     <MainMenu>
       <Grid container>
@@ -18,4 +18,4 @@ const People = () => {
   )
 }
 
-export default People
+export default Calendar
